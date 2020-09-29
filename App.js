@@ -1,14 +1,26 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Platform, View } from "react-native";
+import React, { Component } from "react";
+import { StyleSheet, Platform, View, TouchableHighlight } from "react-native";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/welcomeScreen";
 
-export default function App() {
-  return (
-    <ViewImageScreen />
-    //<WelcomeScreen />;
-  );
+export default class App extends Component {
+  state = {
+    welcomeScreen: true,
+  };
+
+  render() {
+    return (
+      <TouchableHighlight
+        onPress={() =>
+          this.setState({ welcomeScreen: !this.state.welcomeScreen })
+        }
+        style={{ flex: 1, justifyContent: "center", alignContent: "center" }}
+      >
+        {this.state.welcomeScreen ? <WelcomeScreen /> : <ViewImageScreen />}
+      </TouchableHighlight>
+    );
+  }
 }
 
 /*

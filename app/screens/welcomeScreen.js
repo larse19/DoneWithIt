@@ -1,7 +1,15 @@
 import React from "react";
-import { ImageBackground, StyleSheet, Text, Image, View } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  Image,
+  View,
+  StatusBar,
+} from "react-native";
 
 function WelcomeScreen(props) {
+  StatusBar.setBarStyle("default");
   return (
     <ImageBackground
       source={require("../assets/background.jpg")}

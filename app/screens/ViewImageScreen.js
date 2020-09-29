@@ -1,37 +1,48 @@
-import React from "react";
+import React, { Component } from "react";
 import {
-  ImageBackground,
   StyleSheet,
   Text,
   Image,
   View,
   StatusBar,
-  TouchableHighlightBase,
+  TouchableHighlight,
 } from "react-native";
 
-let text = "";
+class ViewImageScreen extends Component {
+  state = {
+    text: "hej",
+  };
 
-updateText = () => {
-  this.text = "Hey";
-};
+  updateText = () => {
+    this.setState({ text: "Hello" });
+  };
 
-function ViewImageScreen(props) {
-  StatusBar.setBarStyle("light-content");
-
-  return (
-    <TouchableHighlightBase onPress={updateText()}>
+  render() {
+    StatusBar.setBarStyle("light-content");
+    return (
       <View style={styles.view}>
         <View style={styles.close} />
         <View style={styles.delete} />
-        <Text style={{ top: 20 }}>{this.text}</Text>
+
         <Image
           resizeMode="contain"
           style={styles.image}
           source={require("../assets/chair.jpg")}
         />
+
+        <Text
+          style={{
+            color: "white",
+            position: "absolute",
+            top: 50,
+            right: "50%",
+          }}
+        >
+          {this.state.text}
+        </Text>
       </View>
-    </TouchableHighlightBase>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
